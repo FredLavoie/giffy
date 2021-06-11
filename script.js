@@ -15,15 +15,16 @@ autocompleteSearchTerms = [
 document.addEventListener('DOMContentLoaded', () => {
 	const searchTerm = document.querySelector('#search-term');
 	searchTerm.value = '';
+	const list = document.querySelector('#list');
 
 	searchTerm.addEventListener('input', (event) => {
 		if (searchTerm.value.length < 3) return;
 		for (const ea of autocompleteSearchTerms) {
 			if (ea.includes(searchTerm.value)) {
-				const item = document.createElement('div');
-				item.value = ea;
-				searchTerm.appendChild(item);
-				console.log('ea: ', ea);
+				const item = document.createElement('p');
+				item.setAttribute('id', ea);
+				item.innerHTML = ea;
+				list.appendChild(item);
 			}
 		}
 	});
